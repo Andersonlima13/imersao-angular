@@ -1,2 +1,161 @@
-<h1> hello world</h1>
-<app-first-component></app-first-component>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Example</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #34495e;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .filters div {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 10px;
+            flex: 1;
+            margin-right: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .filters div:last-child {
+            margin-right: 0;
+        }
+
+        .filters div:hover {
+            background-color: #bdc3c7;
+        }
+
+        .kanban {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .column {
+            width: 23%;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .column h2 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .task-card {
+            background-color: #ffffff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .task-card h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .task-card p {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>Dashboard</h1>
+        <a href="#">Início</a>
+        <a href="#">Tarefas</a>
+        <a href="#">Dashboards</a>
+        <a href="#">Perfil</a>
+    </div>
+    <div class="main-content">
+        <div class="filters">
+            <div>Tarefas Concluídas</div>
+            <div>Tarefas Planejadas</div>
+            <div>Tarefas em Execução</div>
+            <div>Tarefas Bloqueadas</div>
+        </div>
+        <div class="kanban">
+            <div class="column">
+                <h2>Concluídas</h2>
+                <div class="task-card">
+                    <h3>Tarefa 1</h3>
+                    <p>Responsável: João</p>
+                </div>
+            </div>
+            <div class="column">
+                <h2>Planejadas</h2>
+                <div class="task-card">
+                    <h3>Tarefa 2</h3>
+                    <p>Responsável: Maria</p>
+                </div>
+            </div>
+            <div class="column">
+                <h2>Em Execução</h2>
+                <div class="task-card">
+                    <h3>Tarefa 3</h3>
+                    <p>Responsável: Pedro</p>
+                </div>
+            </div>
+            <div class="column">
+                <h2>Bloqueadas</h2>
+                <div class="task-card">
+                    <h3>Tarefa 4</h3>
+                    <p>Responsável: Ana</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
