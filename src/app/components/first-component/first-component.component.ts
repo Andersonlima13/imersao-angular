@@ -9,5 +9,4 @@ export class FirstComponentComponent {
 
 
   // definimos aqui , tipos e components que podem ser reaproveitados
-  name : string = 'anderson'
 }
