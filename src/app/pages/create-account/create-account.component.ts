@@ -1,6 +1,8 @@
 import { FormatWidth } from '@angular/common';
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-account',
@@ -15,8 +17,13 @@ export class CreateAccountComponent {
 
   })
 
+
+  constructor(private userService: UserService, private router: Router){}
+
   createAccount(){
     console.log('testand')
+    this.userService.addUser(this.accountForm.value.name);
+    this.router.navigateByUrl('')
   }
 
   
