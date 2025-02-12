@@ -1,0 +1,13 @@
+<nav class="flex justify-between items-center p-6">
+    <div class="logo p-2 cursor-pointer flex items-center gap-x-2">
+        <img class="w-6 h-6" src="" alt="depois eu coloco">
+        <p class="text-2xl font-bold"> Controle de gastos </p>
+
+
+    </div>
+    @if (userService.isLoggedin()){
+    <button (click)="userService.deleteUserAccount()" class="btn bg-customHsl-warning"> Excluir usuario
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="20px"></svg>
+    </button>
+    }
+</nav>
