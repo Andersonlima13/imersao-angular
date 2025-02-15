@@ -31,5 +31,4 @@ export class BudgetCardComponent implements OnInit {
       this.textColor = this.uiService.generateTailwindClass(this.config.color, 'text')
       this.bgColor = this.uiService.generateTailwindClass(this.config.color, 'bg')
       
-  }
-}
+    }}

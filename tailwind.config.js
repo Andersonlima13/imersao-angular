@@ -12,7 +12,7 @@ module.exports = {
           text: 'hsl(185 26% 9%)',
           muted: 'hsl(183 8% 55%)',
           accent: 'hsl(183 74% 44%)',
-          waringocapacity: 'hsl(4 66% 63%/.1)',
+          warningocapacity: 'hsl(4 66% 63%/.1)',
           blueocapacity: 'hsl(183 74% 44%/ .04)',
           accentocapacity: 'hsl(183 74% 44%/ 0.4)',
           amberocapacity: 'hsl(26 98.5% 37.1%/ 0.04)',

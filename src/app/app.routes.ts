@@ -22,6 +22,8 @@ export const routes: Routes = [
     },
     {
         path: 'create-account',
-        component:CreateAccountComponent
+        component:CreateAccountComponent,
+ 
+
     }
 ];

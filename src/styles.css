@@ -29,6 +29,7 @@
         hover:bg-customHsl-warning hover:text-white
     }
 
+
     .text-inputs{
         @apply w-full
     }
