@@ -17,8 +17,6 @@ export class UserService {
       id: uuidv4(),
       name: name
     }
-
-
     localStorage.setItem(this.USER, JSON.stringify(user));
 
   }
@@ -30,8 +28,6 @@ export class UserService {
   
     
   
-
-
   deleteUserAccount(){
     localStorage.clear();
     this.router.navigateByUrl('create-account')

@@ -2,10 +2,10 @@
     <div class="flex flex-col gap-4 border-2 border-solid {{borderColor}}
         py-4 px-5 rounded-[25px] bg-white">
     
-        <div class="progress-text flex w-full justify-between items-center"> 
+        <div class="flex justify-between items-center">
             <p class="text-2xl {{textColor}} font-bold">{{config.name}}</p>
-            <p class="text-2xl {{textColor}}">{{config.budget | currency: 'R '}} Budgeted</p>
-        </div>  
+            <p class="text-2xl {{textColor}} ml-4">{{config.budget | currency:'':'symbol':'1.2-2'}} Orçamento Limite</p>
+          </div>
     
      
     

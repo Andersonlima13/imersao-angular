@@ -7,18 +7,20 @@
         <!-- Formulario de ganhos -->
         <app-form-wrapper [formGroup]="budgetForm" class="w-1/2">
             <div class="input-form flex flex-col gap-y-4">
-                <h2 class="font-bold text-2xl"> Adcionar orçamento</h2>
+                <h2 class="font-bold text-2xl"> Adcionar Orçamento</h2>
 
                 <div class="text-inputs flex flex-col gap-y-2">
-                    <label class="text-[19px] font-bold"> Titulo do orçamento</label>
+                    <label class="text-[19px] font-bold"> Titulo Do Orçamento</label>
                     <input formControlName="name"  type="text" class="input-select" placeholder="nome aqui">
                 </div>
 
                 <div class="text-inputs flex flex-col gap-y-2">
-                    <label class="text-[19px] font-bold"> Valor</label>
+                    <label class="text-[19px] font-bold"> Valor Estimado</label>
                     <input formControlName="budget" type="number" class="input-select" placeholder="100$">
                 </div>
 
+
+                
                 <button [disabled]="budgetForm.invalid" (click)="addBudget()"  class="btn bg-customHsl-text text-white border-none w-fit text text-[19px]">
                     Criar orçamento
                 </button>
@@ -61,8 +63,9 @@
             </div>
         </app-form-wrapper>
     </div>
+    <h2 class="mini-title"> Orçamentos Definidos</h2>
      @if (budgetCards && budgetCards.length > 0 ){
-        <h2 class="mini-title"> orcamentos existentes</h2>
+       
         <div class="flex w-full flex-wrap gap-4">
             @for (item of budgetCards; track $index){
                 <app-budget-card  [config] ="item"> </app-budget-card> 

@@ -6,7 +6,7 @@ import { BudgetService } from '../../services/budget.service';
 import { ExpenseService } from '../../services/expense.service';
 import { BudgetCategory } from '../../intefaces/models/budget-category.interface';
 import { Budget } from '../../intefaces/models/budget.interface';
-import {v4 as uuidv4} from 'uuid' 
+import {v4 as uuidv4} from 'uuid'    // gerar ids unicos para cada card
 import { budgetCardConfig } from '../../intefaces/ui-config/budget-card-config.interface';
 import { Router } from '@angular/router';
 import { BudgetCardComponent } from '../../components/budget-card/budget-card.component';
@@ -20,11 +20,13 @@ import { BudgetCardComponent } from '../../components/budget-card/budget-card.co
 export class HomeComponent implements OnInit {
 
   budgetForm: FormGroup = new FormGroup({
-    name: new FormControl('',[Validators.required]),
+    name: new FormControl('',[Validators.required]),     // agrupar  os controles do form de orcamento, ambos como required
     budget: new FormControl(null, [Validators.required])
   })
 
-  expenseForm: FormGroup = new FormGroup({
+
+
+  expenseForm: FormGroup = new FormGroup({         // agrupar  os controles do form de gastos, ambos como required
     name: new FormControl('', [Validators.required]),
     amount : new FormControl('null', [Validators.required]),
     budgetCategoryId : new FormControl('null', [Validators.required])
@@ -32,16 +34,19 @@ export class HomeComponent implements OnInit {
 
 
  
-  budgetCategories: BudgetCategory[] = []
-  budgets : Budget[] = []
-  budgetCards: budgetCardConfig[] = []
-  constructor(public userService: UserService, private budgetService: BudgetService,
-     private expenseService: ExpenseService,private router: Router) { }
+  budgetCategories: BudgetCategory[] = []   //  var para armazenar as categorias de orcamento
+  budgets : Budget[] = []                     // armazena os orcamentos
+  budgetCards: budgetCardConfig[] = []    // vai armazenar cada um dos objetos com os dados do card
+
+  constructor(public userService: UserService, private budgetService: BudgetService,    // UserService: Para acessar informações do usuário.
+     private expenseService: ExpenseService,private router: Router) { }   // BudgetService: Para manipular os orçamentos (obter, adicionar, etc).
+// ExpenseService: Para gerenciar as despesas.
+
      ngOnInit(): void {
-        this.budgetCategories = this.budgetService.getBudgetsCategories()  
+        this.budgetCategories = this.budgetService.getBudgetsCategories()  // rrecuperando as categorias que foram adcionadas no orcamento
         this.budgets = this.budgetService.getBudgets();
         this.buildBudgetCards(this.budgets)
-        console.log('orcamento carregando: ', this.budgets)
+        console.log('orcamento carregando: ', this.budgets)   // faz o get dos orcamentos existentes
         this.budgetService.getBudgetData().subscribe({
           next: (res: Budget[]) => {
           this.budgets = res; 
@@ -49,7 +54,7 @@ export class HomeComponent implements OnInit {
            
 
 
-          this.buildBudgetCards(this.budgets)
+          this.buildBudgetCards(this.budgets)  // insere os cards
 
         },
         })
@@ -64,7 +69,7 @@ export class HomeComponent implements OnInit {
 
      }
 
-
+// metodo para adcionar um orcamento vindo do botao, cria um objeto Budget
   addBudget(){
     const budget: Budget = {
       id: uuidv4(),
@@ -80,7 +85,9 @@ export class HomeComponent implements OnInit {
     this.budgetForm.reset()
   }
 
-
+  // Objetivo: Converter cada orçamento em um objeto de configuração para o cartão.
+ // name, budget, spent, color: Dados que serão exibidos no cartão.
+ // percorre o array com orcamentos criando um objeto budgetcardconfig
   buildBudgetCards(budgets: Budget[]){
     this.budgetCards = budgets.map((item: Budget) => {
       return {
