@@ -10,10 +10,14 @@ import {v4 as uuidv4} from 'uuid'    // gerar ids unicos para cada card
 import { budgetCardConfig } from '../../intefaces/ui-config/budget-card-config.interface';
 import { Router } from '@angular/router';
 import { BudgetCardComponent } from '../../components/budget-card/budget-card.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-home',
-  imports: [FormWrapperComponent,ReactiveFormsModule,BudgetCardComponent],
+  imports: [FormWrapperComponent,ReactiveFormsModule,BudgetCardComponent,MatFormFieldModule,MatInputModule,MatButtonModule,MatSelectModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

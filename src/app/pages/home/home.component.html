@@ -1,77 +1,75 @@
 <div class="home-container px-10 flex flex-col gap-x-8">
-    <h1 class="text-7xl front-bold">
-        Bem vindo ! <span class="text-customHsl-accent">{{userService.getUser().name}}</span>
+    <h1 class="text-7xl font-bold">
+      Bem vindo! <span class="text-customHsl-accent">{{ userService.getUser().name }}</span>
     </h1>
-
+  
     <div class="input-container flex w-full gap-x-8 mt-6">
-        <!-- Formulario de ganhos -->
-        <app-form-wrapper [formGroup]="budgetForm" class="w-1/2">
-            <div class="input-form flex flex-col gap-y-4">
-                <h2 class="font-bold text-2xl"> Adcionar Orçamento</h2>
-
-                <div class="text-inputs flex flex-col gap-y-2">
-                    <label class="text-[19px] font-bold"> Titulo Do Orçamento</label>
-                    <input formControlName="name"  type="text" class="input-select" placeholder="nome aqui">
-                </div>
-
-                <div class="text-inputs flex flex-col gap-y-2">
-                    <label class="text-[19px] font-bold"> Valor Estimado</label>
-                    <input formControlName="budget" type="number" class="input-select" placeholder="100$">
-                </div>
-
-
-                
-                <button [disabled]="budgetForm.invalid" (click)="addBudget()"  class="btn bg-customHsl-text text-white border-none w-fit text text-[19px]">
-                    Criar orçamento
-                </button>
-
-
-            </div>
-        </app-form-wrapper>
-        <!--- Formulario de gastos-->
-        <app-form-wrapper [formGroup]="expenseForm" class="w-1/2">
-            <div class="input-form flex flex-col gap-y-4">
-                <h2 class="font-bold text-2xl"> Adcionar despesa</h2>
-
-                <div class="input-container flex gap-x-6">
-                    <div class="text-inputs flex flex-col gap-y-2">
-                        <label class="text-[19px] font-bold"> Titulo do gasto</label>
-                        <input formControlName="name" type="text" class="input-select" placeholder="Compras">
-                    </div>
-    
-                    <div class="text-inputs flex flex-col gap-y-2">
-                        <label class="text-[19px] font-bold"> Valor</label>
-                        <input formControlName="amount" type="number" class="input-select" placeholder="100$">
-                    </div>
-                </div>
-
-                <div class="text-inputs flex flex-col gap-y-2"> 
-                    <label class="text-[19px] font-bold">Categoria de gasto</label>
-                    <select formControlName="budgetCategoryId" class="input-select">
-                       @for (item of budgetCategories; track $index){
-                        <option value="{{item.id}}">{{item.name}}</option>
-                       }
-                    </select>
-
-                </div>
-
-                <button class="btn bg-customHsl-text text-white border-none w-fit text text-[19px]">
-                    Adcionar Gasto
-                </button>
-
-
-            </div>
-        </app-form-wrapper>
-    </div>
-    <h2 class="mini-title"> Orçamentos Definidos</h2>
-     @if (budgetCards && budgetCards.length > 0 ){
-       
-        <div class="flex w-full flex-wrap gap-4">
-            @for (item of budgetCards; track $index){
-                <app-budget-card  [config] ="item"> </app-budget-card> 
-            } 
+      <!-- Formulário de ganhos -->
+      <app-form-wrapper [formGroup]="budgetForm" class="w-1/2">
+        <div class="input-form flex flex-col gap-y-4">
+          <h2 class="font-bold text-2xl">Adicionar Orçamento</h2>
+  
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Título do Orçamento</mat-label>
+            <input matInput formControlName="name" placeholder="nome aqui" />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Valor Estimado</mat-label>
+            <input matInput type="number" formControlName="budget" placeholder="100$" />
+          </mat-form-field>
+  
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="budgetForm.invalid"
+            (click)="addBudget()"
+          >
+            Criar orçamento
+          </button>
         </div>
-     }
-
-
-</div>
+      </app-form-wrapper>
+  
+      <!-- Formulário de gastos -->
+      <app-form-wrapper [formGroup]="expenseForm" class="w-1/2">
+        <div class="input-form flex flex-col gap-y-4">
+          <h2 class="font-bold text-2xl">Adicionar Despesa</h2>
+  
+          <div class="input-container flex gap-x-6">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Título do gasto</mat-label>
+              <input matInput formControlName="name" placeholder="Compras" />
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Valor</mat-label>
+              <input matInput type="number" formControlName="amount" placeholder="100$" />
+            </mat-form-field>
+          </div>
+  
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Categoria de gasto</mat-label>
+            <mat-select formControlName="budgetCategoryId">
+              @for (item of budgetCategories; track $index) {
+                <mat-option [value]="item.id">{{ item.name }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+  
+          <button mat-raised-button color="warn">
+            Adicionar Gasto
+          </button>
+        </div>
+      </app-form-wrapper>
+    </div>
+  
+    <h2 class="mini-title">Orçamentos Definidos</h2>
+    @if (budgetCards && budgetCards.length > 0) {
+      <div class="flex w-full flex-wrap gap-4">
+        @for (item of budgetCards; track $index) {
+          <app-budget-card [config]="item"> </app-budget-card>
+        }
+      </div>
+    }
+  </div>
+  
