@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit {
 
   // Objetivo: Converter cada orçamento em um objeto de configuração para o cartão.
  // name, budget, spent, color: Dados que serão exibidos no cartão.
- // percorre o array com orcamentos criando um objeto budgetcardconfig
+ // percorre o array com orcamentos criando um objeto budgetcardconfig.
   buildBudgetCards(budgets: Budget[]){
     this.budgetCards = budgets.map((item: Budget) => {
       return {
