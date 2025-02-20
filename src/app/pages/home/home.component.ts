@@ -100,7 +100,7 @@ export class HomeComponent implements OnInit {
         spent: item.spent,
         color: item.color,
         onClick: () => {
-          this.router.navigateByUrl(`details/${item.id}`)         
+         
         }
       }
     })
