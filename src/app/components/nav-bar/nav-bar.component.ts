@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,7 +10,7 @@ import { UserService } from '../../services/user.service';
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
-  constructor(public userService: UserService) {
+  constructor(public userService: UserService, public router: Router) {
 
   }
 }

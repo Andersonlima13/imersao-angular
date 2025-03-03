@@ -39,7 +39,7 @@ export class BudgetService {
     const categories = JSON.parse(localStorage.getItem(this.BUDGETS_CATEGORIES) || '[]') as BudgetCategory[]
     return categories
   }
-/*
+
   getBudgetById(budgetId: string){
     const budgets = this.getBudgets()
     const index = budgets.findIndex(x => x.id === budgetId)
@@ -49,7 +49,21 @@ export class BudgetService {
 
     throw Error('Orçamento nao existe')
   }
-*/
+
+
+
+
+  getBudgetCategoryById(id: string) {
+    const categories = this.getBudgetsCategories()
+    const index = categories.findIndex(x => x.id === id)
+    if (index > -1 ) {
+      return categories[index]
+    }
+
+    throw Error('Categoria nao existe')
+  }
+
+
 
 
 

@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { Expense } from '../../intefaces/models/expense.interface';
 
 @Component({
   selector: 'app-home',
@@ -89,6 +90,24 @@ export class HomeComponent implements OnInit {
     this.budgetForm.reset()
   }
 
+  addExpense(){
+    const category = this.budgetService.getBudgetById(this.expenseForm.value.budgetCategoryId)
+    const expense: Expense = {
+      id : uuidv4(),
+      name : this.expenseForm.value.name,
+      budgetCategory: category,
+      amount: parseFloat(this.expenseForm.value.amount),
+      date: new Date(),
+
+
+    }
+
+  }
+
+
+
+
+
   // Objetivo: Converter cada orçamento em um objeto de configuração para o cartão.
  // name, budget, spent, color: Dados que serão exibidos no cartão.
  // percorre o array com orcamentos criando um objeto budgetcardconfig.
@@ -100,6 +119,7 @@ export class HomeComponent implements OnInit {
         spent: item.spent,
         color: item.color,
         onClick: () => {
+          this.router.navigateByUrl(`details/${item.id}`)
          
         }
       }
