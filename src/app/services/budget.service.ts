@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject , Observable} from 'rxjs';
 import { Budget } from '../intefaces/models/budget.interface';
 import { BudgetCategory } from '../intefaces/models/budget-category.interface'; 
+import { error } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,22 @@ export class BudgetService {
     const budgets = JSON.parse(localStorage.getItem(this.BUDGETS) || '[]') as Budget[]
     return budgets
   }
+
+  updateBudgetAmount(budgetId : string, spent: number){
+    const budgets = this.getBudgets()
+
+    const index = budgets.findIndex(x => x.id == budgetId)
+    if (index > - 1){
+      budgets[index].spent = spent
+      this.setBudgets(budgets)
+      return
+    }
+
+    throw Error('Nao foi possivel atualizar o valor!')
+  }
+
+
+
 
 // le as categorias que sao geradas a partir  dos orcamentos que foram cadastradas
   getBudgetsCategories(): BudgetCategory[]{
@@ -90,6 +107,16 @@ export class BudgetService {
     localStorage.setItem(this.BUDGETS_CATEGORIES,JSON.stringify(budgetCategories))
     this.budgetCategorySubject.next(budgetCategories)
   }
+
+
+  deleteBudgetById(budgetId: string){
+    const budgets = this.getBudgets();
+
+    const filtered = budgets.filter((item) => item.id !== budgetId)
+    this.setBudgets(filtered);
+  }
+
+
 
 
   getBudgetData(): Observable<Budget[]>{

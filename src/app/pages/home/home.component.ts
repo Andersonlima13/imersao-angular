@@ -98,9 +98,9 @@ export class HomeComponent implements OnInit {
       budgetCategory: category,
       amount: parseFloat(this.expenseForm.value.amount),
       date: new Date(),
-
-
     }
+
+    this.expenseForm.reset()
 
   }
 
