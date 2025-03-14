@@ -41,10 +41,21 @@ export class ExpenseService {
   }
 
 
+    buildExpenseTable(expenses:  Expense[]){
+      return expenses.map((item: Expense) => {
+        return {
+          id: item.id,
+          name: item.name,
+          amount:item.amount,
+          date: item.date,
+          budget:item.budgetCategory.name,
+
+        }
+      })
+    }
 
 
-
-
+/// configaroces servics expense
   
 
   setExpense(expense: Expense[]){
