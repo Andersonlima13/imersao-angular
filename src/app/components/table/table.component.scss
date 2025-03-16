@@ -1,0 +1,20 @@
+
+:host {
+    display: block;
+    width: 100%;
+  }
+  
+
+
+
+.table-data{
+    @apply w-1/5 text-center p-2 text-[15px] h-[52px] text-customHsl-text
+    border-2 border-solid border-white;
+    .btn {
+        @apply m-auto;
+    }
+
+    th{
+        @apply text-2xl;
+    }
+}

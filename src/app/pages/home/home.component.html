@@ -63,8 +63,9 @@
       </app-form-wrapper>
     </div>
   
-    <h2 class="mini-title">Orçamentos Definidos</h2>
+   
     @if (budgetCards && budgetCards.length > 0) {
+      <h2 class="mini-title">Orçamentos Definidos</h2>
       <div class="flex w-full flex-wrap gap-4">
         @for (item of budgetCards; track $index) {
           <app-budget-card [config]="item"> </app-budget-card>
@@ -72,11 +73,13 @@
       </div>
     }
 
-    <h2 class="mini-title">Orcamentos recentes</h2>
+    
     @if (ExpenseTableData && ExpenseTableData.length > 0) {
-      <div class="flex w-full flex-wrap gap-4">
-          <app-table [data]="ExpenseTableData"></app-table>
+      <h2 class="mini-title">Gastos Recentes</h2>
+      <div class="w-full mt-6 flex justify-center">
+        <app-table [data]="ExpenseTableData" class="w-full"></app-table>
       </div>
+      
     }
 
 
