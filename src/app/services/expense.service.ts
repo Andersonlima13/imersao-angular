@@ -24,6 +24,7 @@ export class ExpenseService {
       const expenses = this.getExpenses()
       expenses.push(expense)
       this.setExpense(expenses)
+      this.updateExpenses(expenses, budget.id)
     }catch(err: any){
       throw Error(err.message)
     }
@@ -39,6 +40,12 @@ export class ExpenseService {
 
     this.budgetService.updateBudgetAmount(budgetId, totalExpense)
   }
+
+
+
+
+
+
 
 
     buildExpenseTable(expenses:  Expense[]){
@@ -69,6 +76,22 @@ export class ExpenseService {
     const deleted = expense.filter((expense : Expense) => expense.budgetCategory.id != budgetId);
     this.setExpense(deleted)
   }
+
+
+
+
+  deleteExpenseById(expenseId: string){
+    const expenses = this.getExpenses()
+    const expense = expenses.filter((expense : Expense) => expense.id === expenseId) [0]; 
+    if (!expense){
+      throw Error('Não é possivel deletar um gasto inexistente')
+      return;
+    }
+    const deleted = expenses.filter((expense : Expense) => expense.id != expenseId);
+    this.setExpense(deleted)
+    this.updateExpenses(deleted,expense.budgetCategory.id)
+  }
+
 
   getExpenseByBudgetId (budgetId: string) {
     const expense = this.getExpenses();

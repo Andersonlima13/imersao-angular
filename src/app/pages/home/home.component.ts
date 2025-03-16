@@ -109,24 +109,35 @@ export class HomeComponent implements OnInit {
   }
 
   addExpense(){
-    console.log('clcado')
-    const category = this.budgetService.getBudgetById(this.expenseForm.value.budgetCategoryId)
+    console.log('clicado');
+    const category = this.budgetService.getBudgetById(this.expenseForm.value.budgetCategoryId);
+    
     const expense: Expense = {
       id : uuidv4(),
       name : this.expenseForm.value.name,
       budgetCategory: category,
       amount: parseFloat(this.expenseForm.value.amount),
       date: new Date(),
-    }
+    };
     
+    // Adiciona o gasto no serviço
+    this.expenseService.addExpense(expense);
+    
+    // Atualiza os dados da tabela após a adição
+    this.ExpenseTableData = this.expenseService.buildExpenseTable(this.expenseService.getExpenses());
 
-    this.expenseService.addExpense(expense)
-    this.expenseForm.reset()
+    this.expenseForm.reset();
+}
+
+
+
+
+
+
+  handleDelete(data: TableDataConfig){
+    this.expenseService.deleteExpenseById(data.id)
 
   }
-
-
-
 
 
   // Objetivo: Converter cada orçamento em um objeto de configuração para o cartão.

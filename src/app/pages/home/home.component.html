@@ -77,7 +77,7 @@
     @if (ExpenseTableData && ExpenseTableData.length > 0) {
       <h2 class="mini-title">Gastos Recentes</h2>
       <div class="w-full mt-6 flex justify-center">
-        <app-table [data]="ExpenseTableData" class="w-full"></app-table>
+        <app-table [data]="ExpenseTableData"  (removeRow)="handleDelete($event)"  class="w-full"></app-table>
       </div>
       
     }

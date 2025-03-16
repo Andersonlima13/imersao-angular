@@ -7,7 +7,7 @@ import { UiService } from '../../services/ui.service';
   standalone: true,
   imports: [],
   templateUrl: './table.component.html',
-  styleUrl: './table.component.scss'
+  styleUrl : './table.component.scss'
 })
 export class TableComponent {
   @Input() data: TableDataConfig[] = [];
