@@ -15,10 +15,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { Expense } from '../../intefaces/models/expense.interface';
+import { TableDataConfig } from '../../intefaces/ui-config/table-data-config.interface';
+import { TableComponent } from "../../components/table/table.component";
 
 @Component({
   selector: 'app-home',
-  imports: [FormWrapperComponent,ReactiveFormsModule,BudgetCardComponent,MatFormFieldModule,MatInputModule,MatButtonModule,MatSelectModule],
+  imports: [FormWrapperComponent, ReactiveFormsModule, BudgetCardComponent, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule, TableComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -42,6 +44,7 @@ export class HomeComponent implements OnInit {
   budgetCategories: BudgetCategory[] = []   //  var para armazenar as categorias de orcamento
   budgets : Budget[] = []                     // armazena os orcamentos
   budgetCards: budgetCardConfig[] = []    // vai armazenar cada um dos objetos com os dados do card
+  ExpenseTableData : TableDataConfig[] = []
 
   constructor(public userService: UserService, private budgetService: BudgetService,    // UserService: Para acessar informações do usuário.
      private expenseService: ExpenseService,private router: Router) { }   // BudgetService: Para manipular os orçamentos (obter, adicionar, etc).
@@ -72,6 +75,21 @@ export class HomeComponent implements OnInit {
           }
         })
 
+
+
+        const expenses = this.expenseService.getExpenses();
+        this.ExpenseTableData = this.expenseService.buildExpenseTable(expenses);
+        this.expenseService.getExpenseData().subscribe({
+          next: (res: Expense[]) => {
+            this.expenseService.buildExpenseTable(res)
+          },
+          error:(error:any) => {
+            console.log(error)
+          }
+        })
+
+
+
      }
 
 // metodo para adcionar um orcamento vindo do botao, cria um objeto Budget
@@ -91,6 +109,7 @@ export class HomeComponent implements OnInit {
   }
 
   addExpense(){
+    console.log('clcado')
     const category = this.budgetService.getBudgetById(this.expenseForm.value.budgetCategoryId)
     const expense: Expense = {
       id : uuidv4(),
@@ -99,7 +118,9 @@ export class HomeComponent implements OnInit {
       amount: parseFloat(this.expenseForm.value.amount),
       date: new Date(),
     }
+    
 
+    this.expenseService.addExpense(expense)
     this.expenseForm.reset()
 
   }

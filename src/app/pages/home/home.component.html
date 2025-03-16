@@ -71,5 +71,15 @@
         }
       </div>
     }
+
+    <h2 class="mini-title">Orcamentos recentes</h2>
+    @if (ExpenseTableData && ExpenseTableData.length > 0) {
+      <div class="flex w-full flex-wrap gap-4">
+          <app-table [data]="ExpenseTableData"></app-table>
+      </div>
+    }
+
+
+
   </div>
   

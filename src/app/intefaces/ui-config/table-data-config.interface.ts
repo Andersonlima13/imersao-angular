@@ -4,5 +4,5 @@ export interface TableDataConfig{
     amount: number;
     date: Date;
     budget: string;
-    color: string
+    color?: string;
 }
