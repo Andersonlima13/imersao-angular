@@ -1,20 +1,28 @@
-
-<div class='create-account-container flex p-6 w-full h-full justify-center items-center' >
+<div class='create-account-container flex p-6 w-full h-full justify-center items-center'>
     <div class="container flex gap-8 h-fit">
         <div [formGroup]="accountForm" class="left-section flex flex-col flex-1 gap-y-4">
             <h1 class="text-[60px] font-bold"> Tenha controle do <span class="text-customHsl-accent"> seu dinheiro </span></h1>
             <p class="text-2xl"> Sua plataforma pessoal de controle de gastos. Comece sua jornada hoje. </p>
-            <input formControlName="name" class="input-select" type="text" placeholder="Entrar com E-mail">
-            <button [disabled]="accountForm.invalid" (click)="createAccount()" class="btn bg-customHsl-text text-white border-none w-fit text-[19px]"> 
+
+            <!-- Campo para o nome do usuário -->
+            <input formControlName="name" class="input-select" type="text" placeholder="Nome">
+
+            <!-- Campo para o email do usuário -->
+            <input formControlName="email" class="input-select" type="email" placeholder="Email" required>
+
+            <!-- Campo para a senha do usuário -->
+            <input formControlName="password" class="input-select" type="password" placeholder="Senha" required>
+
+            <button [disabled]="" (click)="createAccount()" class="btn bg-customHsl-text text-white border-none w-fit text-[19px]"> 
                 Criar conta
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
                     fill="currentColor" aria-hidden="true" width="20">
-                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd"></path></svg>
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd"></path>
+                </svg>
             </button>
         </div>
-         
     </div>
     <div class="right-section flex-5">
         <img src="assets/controle-gastos.png" alt="controle de gastos">
     </div>
-</div> 
+</div>

@@ -1,41 +1,34 @@
-import { FormatWidth } from '@angular/common';
 import { Component } from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { HttpClientModule, HttpClient } from '@angular/common/http';  // Importe o HttpClientModule aqui
 
 @Component({
   selector: 'app-create-account',
-  standalone:true,
-  imports: [ReactiveFormsModule],
+  standalone: true,
+  imports: [ReactiveFormsModule, HttpClientModule],  // Inclua HttpClientModule aqui
   templateUrl: './create-account.component.html',
-  styleUrl: './create-account.component.css'
+  styleUrls: ['./create-account.component.css']
 })
-
-// classe createaccount component
-
 export class CreateAccountComponent {
-  accountForm: FormGroup = new FormGroup({    // accountform agrupa os controles do usuario
-    name: new FormControl('', [Validators.required])   // definindo o campo como required, para exigir o email do usuario
+  accountForm: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+  });
 
-  })
+  constructor(private http: HttpClient, private userService: UserService, private router: Router) {}
 
-  //formgroup valida e submete os dados no formulario
-
-
-  constructor(private userService: UserService, private router: Router){}
-
-
-
-// funcao para criar a conta do usuario
-// ao submeter o formulario o metodo é chamado
-  createAccount(){
-    console.log('criou conta !')
-    this.userService.addUser(this.accountForm.value.name);
-    this.router.navigateByUrl('')
-  }
-// userservice é usado para adcionar o usuario , adcionando no localstorage
+  createAccount() {
+    console.log('Dados enviados para o backend:', this.accountForm.value);
   
-
-
-}
+    const userData = this.accountForm.value;
+    this.http.post('http://localhost:8080/usuarios/criar', userData)
+      .subscribe(response => {
+        console.log('Resposta do backend:', response);
+        this.router.navigateByUrl('');
+      }, error => {
+        console.error('Erro ao criar usuário:', error);
+      });
+  }}
