@@ -16,7 +16,7 @@
     transition: 0.3s ease-in-out;
 }
 
-/* Botão de Criar Conta */
+/* Botão de Login */
 .btn-primary {
     background-color: #1f2937; /* Cor do botão principal */
     color: white;
@@ -26,7 +26,7 @@
     background-color: #111827; /* Tom mais escuro ao passar o mouse */
 }
 
-/* Botão de Já tenho login */
+/* Botão de Criar Conta */
 .btn-secondary {
     background-color: #e5e7eb; /* Cor cinza */
     color: black;

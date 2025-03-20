@@ -3,6 +3,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { BudgetDetailsComponent } from './pages/budget-details/budget-details.component';
 import { CreateAccountComponent } from './pages/create-account/create-account.component';
 import { authGuard } from './guards/auth.guard';
+import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
     {
@@ -13,7 +14,7 @@ export const routes: Routes = [
     {
         path:'home',
         component:HomeComponent,
-        canActivate: [authGuard]
+    
     },
     {
         path: 'details/:id',
@@ -25,5 +26,18 @@ export const routes: Routes = [
         component:CreateAccountComponent,
  
 
+    },
+
+    {
+        path: 'login',
+        component:LoginComponent,
+ 
+
     }
+
+
+
+
+
+
 ];

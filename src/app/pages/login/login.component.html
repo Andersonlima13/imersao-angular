@@ -1,0 +1,22 @@
+<div class='login-container flex p-6 w-full h-full justify-center items-center'>
+    <div class="container flex gap-8 h-fit">
+        <div [formGroup]="loginForm" class="left-section flex flex-col flex-1 gap-y-4">
+            <h1 class="text-[60px] font-bold">Faça login para acessar sua conta</h1>
+
+            <!-- Campo para o email do usuário -->
+            <input formControlName="email" class="input-select" type="email" placeholder="Email" required>
+
+            <!-- Campo para a senha do usuário -->
+            <input formControlName="password" class="input-select" type="password" placeholder="Senha" required>
+
+            <button [disabled]="successMessage !== ''" (click)="loginUsuario()" class="btn bg-customHsl-text text-white border-none w-fit text-[19px]">
+                {{ successMessage ? successMessage : 'Login' }}
+            </button>
+        </div>
+    </div>
+</div>
+
+    <div class="right-section flex-5">
+        <img src="assets/controle-gastos.png" alt="controle de gastos">
+    </div>
+
