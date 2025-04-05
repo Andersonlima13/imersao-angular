@@ -36,9 +36,12 @@ export class BudgetDetailsComponent implements OnInit {
   constructor (private router : Router,private budgetService: BudgetService, public uiService: UiService,
     private expenseService: ExpenseService, private activatedRoute: ActivatedRoute) {}
   ngOnInit(): void {
+      
       this.activatedRoute.params.subscribe((params: Params) => {
         this.budgetId = params['id'];
         this.initializeData();
+
+        
 
         const expenses= this.expenseService.getExpenseByBudgetId(this.budgetId);
         this.expenseTableData = this.expenseService.buildExpenseTable(expenses);
@@ -53,7 +56,14 @@ export class BudgetDetailsComponent implements OnInit {
           }
         });
       })
+
+      
   } 
+
+
+
+
+  
 
   addExpense() {
     const category = this.budgetService.getBudgetCategoryById(this.budgetId);
