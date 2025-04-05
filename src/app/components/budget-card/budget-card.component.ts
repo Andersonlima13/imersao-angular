@@ -41,7 +41,6 @@ export class BudgetCardComponent implements OnInit {
     viewDetails(){
       if(this.config.onClick){
         this.config.onClick()
-        console.log('funcionou esta desgraca')
       }
     } 
   

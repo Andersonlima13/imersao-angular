@@ -37,7 +37,7 @@ export class CreateAccountComponent {
     console.log('Criando conta!');
     const userData = this.accountForm.value;
   
-    this.http.post('http://localhost:8080/usuarios/criar', userData).subscribe(
+    this.http.post('https://api-financeiro-cxyp.onrender.com/usuarios/criar', userData).subscribe(
       (response: any) => {
         console.log('Usuário criado com sucesso!', response);
         this.successMessage = 'Usuário criado com sucesso!'; // Define a mensagem de sucesso

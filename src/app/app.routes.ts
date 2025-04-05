@@ -19,7 +19,6 @@ export const routes: Routes = [
     {
         path: 'details/:id',
         component:BudgetDetailsComponent,
-        canActivate: [authGuard]
     },
     {
         path: 'create-account',
