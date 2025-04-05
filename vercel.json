@@ -1,12 +1,15 @@
 {
     "version": 2,
+    "builds": [
+      {
+        "src": "src/main.ts",
+        "use": "@vercel/angular"
+      }
+    ],
     "routes": [
       {
         "src": "/details/.*",
-        "dest": "/server", 
-        "headers": {
-          "x-vercel-revalidate": "1"
-        }
+        "dest": "/"
       }
     ]
   }
