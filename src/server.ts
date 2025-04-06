@@ -28,6 +28,14 @@ const angularApp = new AngularNodeAppEngine();
 
 /**
  * Serve static files from /browser
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  */
 app.use(
   express.static(browserDistFolder, {
@@ -36,6 +44,12 @@ app.use(
     redirect: false,
   }),
 );
+
+
+
+
+
+
 
 /**
  * Handle all other requests by rendering the Angular application.
