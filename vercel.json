@@ -5,7 +5,7 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "estudos-angular"
+        "distDir": "dist/estudos-angular"
       }
     }
   ],
