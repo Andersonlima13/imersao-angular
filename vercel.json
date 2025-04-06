@@ -2,19 +2,16 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
+      "src": "angular.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/estudos-angular"
+        "distDir": "dist/estudos-angular/browser"
       }
     }
   ],
   "routes": [
     {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/.*",
+      "src": "/(.*)",
       "dest": "/index.html"
     }
   ]
