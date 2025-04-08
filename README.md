@@ -1,59 +1,38 @@
-# EstudosAngular
+### Gestor Financeiro
+O Gestor Financeiro é uma aplicação projetada para ajudar os usuários a gerenciar seus gastos de maneira prática e eficiente. Através desta ferramenta, é possível cadastrar diferentes categorias de gasto e associar cada despesa a uma categoria específica, permitindo uma visão clara e detalhada do fluxo financeiro.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.7.
+### [Gestor de finanças](https://financeiro-angular-2xwszwoaz-andersonlima13s-projects.vercel.app)
 
-## Development server
 
-To start a local development server, run:
+### Tecnologias Utilizadas
+<h1> Front-end: </h1>
+Desenvolvido com Angular e TypeScript, proporcionando uma interface responsiva, moderna e de fácil navegação.
 
-```bash
-ng serve
-```
+<h1> Back-end: </h1>
+Construído com Java e Spring Boot, garantindo robustez, escalabilidade e segurança no processamento dos dados.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+<h1> Banco de Dados: </h1>
+Utiliza o Firebase para o gerenciamento de usuários, proporcionando uma solução em nuvem eficiente e segura.
 
-## Code scaffolding
+###  Funcionalidades
+Cadastro de Categorias de Gasto:
+O usuário pode criar diferentes categorias para organizar seus gastos, como alimentação, transporte, lazer, entre outras.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+###  Adição de Despesas:
+É possível registrar cada gasto e associá-lo a uma categoria previamente criada, ajudando a manter um controle financeiro detalhado.
 
-```bash
-ng generate component component-name
-```
+### Armazenamento de Dados:
+Utiliza o Firebase para armazenar as informações dos usuários de maneira segura e em tempo real, garantindo um gerenciamento ágil e confiável dos dados.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Como Executar o Projeto
+Pré-requisitos
+Certifique-se de que você possui as seguintes ferramentas instaladas:
 
-```bash
-ng generate --help
-```
+Node.js (para executar o front-end)
 
-## Building
+Java JDK (para rodar o back-end)
 
-To build the project run:
+Spring Boot (para o back-end)
 
-```bash
-ng build
-```
+Firebase Account (para o armazenamento dos dados)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
