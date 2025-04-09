@@ -24,7 +24,7 @@ export class LoginComponent {
   loginUsuario() {
     const loginData = this.loginForm.value;
 
-    this.http.post('http://localhost:8080/usuarios/login', loginData).subscribe(
+    this.http.post('https://api-financeiro-cxyp.onrender.com/usuarios/login', loginData).subscribe(
       (response: any) => {
         console.log('Login bem-sucedido!', response);
         this.successMessage = 'Login bem-sucedido!';
